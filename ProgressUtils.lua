@@ -30,7 +30,15 @@ function progress.Create(id)
 
     while progressActive == 1 do
         currentValue = currentValue + AddValue
-        sleep()
+        sleep(waitTime)
+        clear()
+        DrawProgress(progressStyle)
+
+        if currentValue == MaxValue and progressActive == 1 then
+            progressActive = 0
+            clear()    
+        end
+
     end
     
 end
@@ -63,10 +71,36 @@ function progress.Edit(valueName, value)
 
 end
 
-function version()
+function progress.Version()
     print("Progress Utitlites")
     print("By BakaDoge")
     print("Version 1.0")
+end
+
+function DrawProgress(styleArgs)
+    
+    if styleArgs == 0 then
+        print(messageString .. "[" .. currentValue .. "]" .. "%")
+    end
+   
+    if styleArgs == 1 then
+        print("-=[" .. messageString .. " " .. "(" .. currentValue .. "%" .. ")" .. "]=-")
+    end
+  
+       
+    if styleArgs == 2 then
+        print("====================================")
+        print("      " .. messageString .. " " .. "(" .. currentValue .. "%" .. ")")
+        print("====================================")
+    end
+  
+       
+    if styleArgs == 3 then
+        print("#===================================#")
+        print("      " .. messageString .. " " .. "<" .. currentValue .. "%" .. ">")
+        print("#===================================#")
+    end
+  
 end
 
 return progress
