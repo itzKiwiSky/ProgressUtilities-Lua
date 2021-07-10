@@ -4,7 +4,6 @@ Created just for learning purposes, but feel free to use in your projects, chang
 any mention or credit is highly appreciated =3
 
 # Simple Documentation
-======
 
 Some functions will be explained here:
 
@@ -47,8 +46,15 @@ function setup()
     progress.edit(WaitTime, 1) 
     progress.edit(MaxValue, 100
     progress.edit(Message, "loading your content")
-    progress.edit(Style, 4)
+    progress.edit(Style, 2)
 end
+```
+
+**Output**:
+```
+====================================
+    Loading your content (45%)
+====================================
 ```
 
 This function require two arguments, you see on the examples need the "ValueName" and "Value".
@@ -64,4 +70,8 @@ But the "Value" input can be a string or a number.
 | MaxValue | Number (Int) | Set the max value for progress |
 | Message | String | Write your loading message |
 | Style | Number (Int) | Set the loading style |
+
+## How to import
+
+**[1]** Download the code
 
