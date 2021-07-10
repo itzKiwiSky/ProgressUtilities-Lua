@@ -61,7 +61,7 @@ function progress.Edit(valueName, value)
         AddValue = value
     end
 
-    if valueName == "message" then
+    if valueName == "Message" then
         messageString = value
     end
 
