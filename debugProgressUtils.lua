@@ -77,6 +77,7 @@ function progress.Version()
     print("Version 1.0")
 end
 
+-- external function to draw all the message
 function DrawProgress(styleArgs)
     
     if styleArgs == 0 then
@@ -97,10 +98,18 @@ function DrawProgress(styleArgs)
        
     if styleArgs == 3 then
         print("#==========[]" .. messageString  .. "[]=============#")
-        print("       " .. "-=[" .. currentValue .. "%" .. "]=-")
+        print("       ".. "-=[" .. currentValue .. "%" .. "]=-")
         print("#===================================#")
     end
   
+end
+
+--function to end the progress
+function progress.ForceEnd(args)
+
+    progressActive = 0
+    clear()
+    
 end
 
 return progress
@@ -108,10 +117,15 @@ return progress
 
 
 --[[
-        functions
+        functions (Official)
 
 progress.Create()
 progress.Edit()
 progress.Version()
 
+--------------------------------------------
+        functions (debug lib)
+
+progress.Draw()
+progress.warn()
 ]]--
