@@ -70,7 +70,7 @@ progress.Style()                -- Select the style, for now available [0, 1, 2,
 
 ## How to import
 
-[image]: 
+[image]: https://github.com/Doge2Dev/ProgressUtilities-Lua/blob/main/imgDocs/1.png
 
 **[1]** Download the code
 ![alt text][image]
