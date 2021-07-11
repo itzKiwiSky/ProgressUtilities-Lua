@@ -33,8 +33,8 @@ On function ```progress.Create()``` it will add 4 to value every time.
 
 **Example2**:
 ```lua
-progress.Edit(AddValue, 4)          -- edit value "AddValue"
-progress.edit(WaitTime, 1)          -- edit value "WaitTime"
+progress.AddValue(5)                -- edit value "AddValue"
+progress.WaitTime(0.1)              -- edit value "WaitTime"
 progress.Create(0)                  -- Create the progress
 ```
 You can create a simple function to help with this setup
@@ -42,11 +42,11 @@ You can create a simple function to help with this setup
 **Example 3**:
 ``` lua
 function setup()
-    progress.Edit(AddValue, 4)
-    progress.edit(WaitTime, 1) 
-    progress.edit(MaxValue, 100
-    progress.edit(Message, "loading your content")
-    progress.edit(Style, 2)
+    progress.AddValue(5)
+    progress.WaitTime(0.1)
+    progress.MaxValue(100)
+    progress.Message("Loading Content.")
+    progress.Style(4)    
 end
 ```
 
@@ -57,21 +57,20 @@ end
 ====================================
 ```
 
-This function require two arguments, you see on the examples need the "ValueName" and "Value".
-The "ValueName" input is always a string, because is the name of the value you want edit to your progress.
-But the "Value" input can be a string or a number.
+These function are made to edit the progress content:
 
-## Here all the values available for this function:
+```lua
+progress.AddValue()             -- This function add to counter
+progress.WaitTime()             -- This function is a sleep function to wait.
+progress.MaxValue()             -- Set the maximum value, and if the counter reach this value it will be stopped
+progress.Message()              -- Set your custom loading message
+progress.Style()                -- Select the style, for now available [0, 1, 2, 3]
+``` 
 
-| Value name | Value Type | Description |         
-|:---:|:---:|:---:
-| WaitTime | Number (int or Float) | fucntion to do a "little" stop |
-| AddValue | Number (Int) | Add value every second |
-| MaxValue | Number (Int) | Set the max value for progress |
-| Message | String | Write your loading message |
-| Style | Number (Int) | Set the loading style |
 
 ## How to import
 
-**[1]** Download the code
+[image]: 
 
+**[1]** Download the code
+![alt text][image]

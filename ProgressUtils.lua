@@ -16,25 +16,26 @@ end
 ------------------------
 
 --variables
-local progressActive = 0                --if == 1 continue loop
-local CurrentValue = 0                  --current progress value
+local progressActive = 0                 --if == 1 continue loop
+local progressAwait = 0                  --current progress value
 local MaxValue = nil
 local progressStyle = nil
 local AddValue = nil
 local messageString = nil
+local waitTime = nil
 
 
 -- create progress function
-function progress.Create(id)
+function progress.Create()
     progressActive = 1
 
     while progressActive == 1 do
-        currentValue = currentValue + AddValue
+        progressAwait = progressAwait + AddValue
         sleep(waitTime)
         clear()
         DrawProgress(progressStyle)
 
-        if currentValue == MaxValue and progressActive == 1 then
+        if progressAwait == MaxValue and progressActive == 1 then
             progressActive = 0
             clear()    
         end
@@ -46,30 +47,26 @@ end
 
 --edit values function
 
-function progress.Edit(valueName, value)
-
-    --string functions for edit values
-    if valueName == "MaxValue" then
-        MaxValue = value
-    end
-
-    if valueName == "Style" then
-        progressStyle = value
-    end
-
-    if valueName == "AddValue" then
-        AddValue = value
-    end
-
-    if valueName == "Message" then
-        messageString = value
-    end
-
-    if valueName == "WaitTime" then
-        waitTime = value
-    end
-
+function progress.AddValue(value)
+    AddValue = value
 end
+
+function progress.WaitTime(value)
+    waitTime = value
+end
+
+function progress.MaxValue(value)
+    MaxValue = value
+end
+
+function progress.Message(value)
+    messageString = value
+end
+
+function progress.StyleID(value)
+    progressStyle = value
+end
+
 
 function progress.Version()
     print("Progress Utitlites")
@@ -80,25 +77,24 @@ end
 function DrawProgress(styleArgs)
     
     if styleArgs == 0 then
-        print(messageString .. "[" .. currentValue .. "]" .. "%")
+        print(messageString .. "[" .. progressAwait .. "]" .. "%")
     end
    
     if styleArgs == 1 then
-        print("-=[" .. messageString .. " " .. "(" .. currentValue .. "%" .. ")" .. "]=-")
+        print("-=[" .. messageString .. " " .. "(" .. progressAwait .. "%" .. ")" .. "]=-")
     end
   
        
     if styleArgs == 2 then
         print("====================================")
-        print("      " .. messageString .. " " .. "(" .. currentValue .. "%" .. ")")
+        print("      " .. messageString .. " " .. "(" .. progressAwait .. "%" .. ")")
         print("====================================")
     end
   
        
     if styleArgs == 3 then
         print("#==========[]" .. messageString  .. "[]=============#")
-        print("       " .. "-=[" .. currentValue .. "%" .. "]=-")
-        print("#===================================#")
+        print("       " .. "-=[" .. progressAwait .. "%" .. "]=-")
     end
   
 end
