@@ -1,19 +1,18 @@
 --start code
-
 local progress = {}     -- index table definition
-
 --external functions
 
-function sleep(secs)
+
+function progress.sleep(secs)
     local start = os.time()
     repeat until os.time() > start + secs
 end
 
-function clear()
+function progress.clear()
     os.execute("cls")
 end
 
-------------------------
+-------------------------------------------------
 
 --variables
 local progressActive = 0                 --if == 1 continue loop
@@ -31,13 +30,13 @@ function progress.Create()
 
     while progressActive == 1 do
         progressAwait = progressAwait + AddValue
-        sleep(waitTime)
-        clear()
+        progress.sleep(waitTime)
+        progress.clear()
         DrawProgress(progressStyle)
 
         if progressAwait == MaxValue and progressActive == 1 then
             progressActive = 0
-            clear()    
+            progress.clear()    
         end
 
     end
@@ -71,7 +70,7 @@ end
 function progress.Version()
     print("Progress Utitlites")
     print("By BakaDoge")
-    print("Version 1.0")
+    print("Version 1.2")
 end
 
 function DrawProgress(styleArgs)
@@ -93,13 +92,88 @@ function DrawProgress(styleArgs)
   
        
     if styleArgs == 3 then
-        print("#==========[]" .. messageString  .. "[]=============#")
-        print("       " .. "-=[" .. progressAwait .. "%" .. "]=-")
+        print("####################################################")
+        print("         " .. messageString .. "##" .. "[" .. progressAwait .. "%" .."]")
+        print("####################################################")
+
     end
-  
+
+    if styleArgs == 4 then
+        print("[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][][][]")
+        print(" ")
+        print("         " .. "-============================-")
+        print("                  " .. "-=[" .. progressAwait .. "%" .. "]=-")
+        print("         " .. "-============================-")
+        print(" ")
+        print("[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][][][]")
+    end
+
 end
 
-return progress
+function progress.ForceDraw(styleArgs)
+
+    function checkValues()
+        if progressActive ~= 0 then
+            return
+        else
+            messageString = "Example Message"
+            progressAwait = 10
+        end
+    end
+
+    checkValues()
+    
+    if styleArgs == 0 then
+        print(messageString .. "[" .. progressAwait .. "]" .. "%")
+    end
+   
+    if styleArgs == 1 then
+        print("-=[" .. messageString .. " " .. "(" .. progressAwait .. "%" .. ")" .. "]=-")
+    end
+  
+       
+    if styleArgs == 2 then
+        print("====================================")
+        print("      " .. messageString .. " " .. "(" .. progressAwait .. "%" .. ")")
+        print("====================================")
+    end
+  
+       
+    if styleArgs == 3 then
+        print("####################################################")
+        print("         " .. messageString .. "##" .. "[" .. progressAwait .. "%" .."]")
+        print("####################################################")
+
+    end
+
+    if styleArgs == 4 then
+        print("[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][][][]")
+        print(" ")
+        print("         " .. "-============================-")
+        print("                  " .. "-=[" .. progressAwait .. "%" .. "]=-")
+        print("         " .. "-============================-")
+        print(" ")
+        print("[][][][][][][][][][][][][][][][][][][]][][][][][][][][][][][][]")
+    end
+
+    local MaxValue = nil
+    local progressStyle = nil
+    local AddValue = nil
+    local messageString = nil
+    local waitTime = nil
+
+end
+
+function progress.ValueTable()
+    print(AddValue)
+    print(waitTime)
+    print(MaxValue)
+    print(messageString)
+    print(progressStyle)
+end
+
+
+return progress 
 
 
 
@@ -109,5 +183,11 @@ return progress
 progress.Create()
 progress.Edit()
 progress.Version()
+
+-------------------------------------------------------
+        debug functions
+
+progress.ForceDraw()
+progress.ValueTable()
 
 ]]--

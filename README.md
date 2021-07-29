@@ -1,7 +1,5 @@
 # ProgressUtilities-Lua
 
-[image2]: https://github.com/Doge2Dev/ProgressUtilities-Lua/blob/main/imgDocs/2.png
-
 Created just for learning purposes, but feel free to use in your projects, change the code and redistribute.
 any mention or credit is highly appreciated =3
 
@@ -9,21 +7,19 @@ any mention or credit is highly appreciated =3
 
 Some functions will be explained here:
 
-![alt-text][image2]
-
 # progress.Create
 
-Use: ```progress.Create()```
+Use: ```progress.Create(wait-time)```
 
 This function start the progress counter on your project.
-Not require any input.
+It only require **one** input, this input is the wait time or wait seconds
 
 **Example**:
-```progress.Create()```
+```progress.Create(1)```
 
 Every **1** second(s) this will add a value to progress.
 
-# edit functions
+# progress.Edit
 
 Use: ```progress.Edit(ValueName, Value)```
 
@@ -71,45 +67,17 @@ progress.Message()              -- Set your custom loading message
 progress.Style()                -- Select the style, for now available [0, 1, 2, 3]
 ``` 
 
+# Debug functions (Optional)
+
+````lua
+progress.ForceDraw()            -- This function force draw the loading style
+progress.ValueTable()           -- This function will only show the variables
+````
+
 
 ## How to import
 
-[image]: https://github.com/Doge2Dev/ProgressUtilities-Lua/blob/main/imgDocs/1.png
+[image]: 
 
 **[1]** Download the code
-
 ![alt text][image]
-
-**[2]** Import to your script
-
-```lua
-local progress = require 'ProgressUtils'
-```
-
-
-
-## Here some example to how you use:
-
-```lua
-local progress = require 'ProgressUtils'        -- just the module
-
--- Function to configure the progress
-function progressSetup()
-    progress.AddValue(5)
-    progress.WaitTime(0.001)
-    progress.MaxValue(100)
-    progress.Message("loading...")
-    progress.StyleID(3)
-end
-
-progressSetup()
-
--- Initialize the progress
-progress.Create()
-
--- show the current module version (useless)
-progress.Version()
-```
-
-
-Created by BakaDoge_Dev =3
