@@ -74,10 +74,3 @@ progress.ForceDraw()            -- This function force draw the loading style
 progress.ValueTable()           -- This function will only show the variables
 ````
 
-
-## How to import
-
-[image]: 
-
-**[1]** Download the code
-![alt text][image]
